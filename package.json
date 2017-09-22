@@ -13,14 +13,12 @@
     "jquery": "^2.2.3",
     "nodemon": "^1.11.0",
     "tslint": "^5.7.0",
-    "tslint-multamedio-rules": "git+ssh://mars:/var/lib/git/tslint-multamedio-rules#v2.1.0",
     "typescript": "^2.5.2"
   },
   "dependencies": {
     "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.42",
     "chai": "^4.1.2",
-    "mocha": "^3.5.0",
-    "tsc": "^1.20150623.0"
+    "mocha": "^3.5.0"
   }
 }
