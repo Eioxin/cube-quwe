@@ -8,10 +8,8 @@ import { ApiService } from './api.service';
 })
 export class AppComponent {
   constructor(private _apiService: ApiService) {
-    this._apiService.getTestMessage().subscribe(result => {
-      console.log(result);
-    });
+    this._apiService.getTestMessage().subscribe(result => this.msg = result);
   }
 
-  title = 'app';
+  msg = '';
 }

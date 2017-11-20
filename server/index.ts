@@ -2,11 +2,13 @@ import * as express from 'express';
 import * as path from 'path';
 const app = express();
 
+const messageOfTheDay = 'Dont do drugs, kids!';
+
 // Make Angular files public
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
 app.get('/api/test', (req, res) => {
-  res.json({ msg: 'Test json message' });
+  res.json({ msg: messageOfTheDay });
 });
 
 // For Angular routes
