@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from './api.service';
+import { ApiService } from './shared/services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { ApiService } from './api.service';
 })
 export class AppComponent {
   constructor(private _apiService: ApiService) {
-    this._apiService.getTestMessage().subscribe(result => this.msg = result);
+    this._apiService.getAccountCode().subscribe(result => this.msg = result);
   }
 
   msg = '';

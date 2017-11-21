@@ -1,22 +1,27 @@
 import * as express from 'express';
 import * as path from 'path';
+import * as bodyParser from 'body-parser';
 const app = express();
+
+// Routes
+import apiRoute from './routes/api';
 
 const messageOfTheDay = 'Dont do drugs, kids!';
 
-// Make Angular files public
+// Settings
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
-app.get('/api/test', (req, res) => {
-  res.json({ msg: messageOfTheDay });
-});
+// Routes
+app.use('/api', apiRoute);
 
-// For Angular routes
+// Angular connection
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
 });
 
 // Host the app
 app.listen(3000, () => {
-  console.log('oimfeiomfieo');
+  console.log('Listening on port http://localhost:3000/');
 });
