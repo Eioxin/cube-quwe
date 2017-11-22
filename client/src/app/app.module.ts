@@ -6,16 +6,20 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ApiService } from './shared/services/api.service';
 import { HomeModule } from './modules/home/home.module';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { LoginModule } from './modules/login/login.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot([]),
-    HomeModule
+    HomeModule,
+    LoginModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
