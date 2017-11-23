@@ -5,7 +5,7 @@ import 'rxjs/add/observable/of';
 class Account {
   code: string;
 
-  pass: string;
+  password: string;
 }
 
 const accountArray: Account[] = [];
@@ -21,9 +21,9 @@ export class AccountsService {
     return Observable.of(false);
   }
 
-  static createAccount(code: string, pass: string): Observable<Account> {
+  static createAccount(code: string, password: string): Observable<Account> {
     /* TODO Datenbank */
-    const account = { code, pass };
+    const account = { code, password };
     accountArray.push(account);
     /* END */
     return Observable.of(account);
@@ -34,11 +34,11 @@ export class AccountsService {
     return Observable.of(accountArray);
   }
 
-  static editAccount(code: string, pass: string): Observable<Account | undefined> {
+  static editAccount(code: string, password: string): Observable<Account | undefined> {
     /* TODO Datenbank */
     const account = accountArray.find(account => account.code === code);
     if (!account) return Observable.of(undefined);
-    account.pass = pass;
+    account.password = password;
     /* END */
     return Observable.of(account);
   }
