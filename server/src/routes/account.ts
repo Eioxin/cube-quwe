@@ -10,19 +10,22 @@ account.get('/', (req, res) => {
 });
 
 account.post('/', (req, res) => {
-  AccountsService.createAccount('random', '123').subscribe(success => {
-    return res.json(success);
+  const { code, pass } = req.body;
+  AccountsService.createAccount(code, pass).subscribe(account => {
+    return res.json(account);
   });
 });
 
 account.put('/', (req, res) => {
-  AccountsService.editAccount('random').subscribe(success => {
-    return res.json(success);
+  const { code, pass } = req.body;
+  AccountsService.editAccount(code, pass).subscribe(account => {
+    return res.json(account);
   });
 });
 
 account.delete('/', (req, res) => {
-  AccountsService.deleteAccount('random').subscribe(success => {
+  const { code } = req.body;  
+  AccountsService.deleteAccount(code).subscribe(success => {
     return res.json(success);
   });
 });
