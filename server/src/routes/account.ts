@@ -4,19 +4,27 @@ import { AccountsService } from '../services/accounts.service';
 const account = Router();
 
 account.get('/', (req, res) => {
-  return res.json(AccountsService.getAllAccounts());
+  AccountsService.getAllAccounts().subscribe(accounts => {
+    return res.json(accounts);
+  });
 });
 
 account.post('/', (req, res) => {
-  return res.json(AccountsService.createAccount('random', '123'));
+  AccountsService.createAccount('random', '123').subscribe(success => {
+    return res.json(success);
+  });
 });
 
 account.put('/', (req, res) => {
-  return res.json(AccountsService.editAccount('random'));
+  AccountsService.editAccount('random').subscribe(success => {
+    return res.json(success);
+  });
 });
 
 account.delete('/', (req, res) => {
-  return res.json(AccountsService.deleteAccount('random'));
+  AccountsService.deleteAccount('random').subscribe(success => {
+    return res.json(success);
+  });
 });
 
 export default account;

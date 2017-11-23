@@ -1,32 +1,34 @@
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 export class AccountsService {
-  static accountExists(code: string): boolean {
+  static accountExists(code: string): Observable<boolean> {
     // Datenbank
-    return false;
+    return Observable.of(false);
   }
 
-  static joinCodeExists(code: string): boolean {
+  static joinCodeExists(code: string): Observable<boolean> {
     // Datenbank
-    return false;
+    return Observable.of(false);
   }
 
-  static createAccount(code: string, pass: string) {
+  static createAccount(code: string, pass: string): Observable<boolean> {
     // Datenbank
-    return true;
+    return Observable.of(true);
   }
 
-  static getAllAccounts() {
+  static getAllAccounts(): Observable<any[]> {
     // Datenbank
-    return [];
+    return Observable.of([]);
   }
 
-  static editAccount(code: string) {
+  static editAccount(code: string): Observable<boolean> {
     // Datenbank
-    return true;
+    return Observable.of(true);
   }
 
-  static deleteAccount(code: string) {
-    return true;
+  static deleteAccount(code: string): Observable<boolean> {
+    return Observable.of(true);
   }
 }
