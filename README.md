@@ -15,34 +15,20 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installing
 
 1. Clone this project
-2. Install both client and server npm modules
+2. Install in parent directory (installs both client and server packages)
 
 ```
-cd client
-yarn
-```
-
-```
-cd server
 yarn
 ```
 
 3. Setup database (TODO)
-4. Build client
+4. Run the project (runs client builder with watch and webserver)
 
 ```
-cd client
-ng build --watch
-```
-
-5. Run server
-
-```
-cd server
 yarn start
 ```
 
-6. Open http://localhost:3000/ on your browser
+5. Open http://localhost:3000/ on your browser
 
 
 ## Built With
@@ -64,9 +50,3 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc

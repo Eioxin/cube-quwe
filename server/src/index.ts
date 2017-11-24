@@ -11,14 +11,14 @@ const messageOfTheDay = 'Dont do drugs, kids!';
 // Settings
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+app.use(express.static(path.join(__dirname, '..', '..', 'client', 'dist')));
 
 // Routes
 app.use('/api', apiRoute);
 
 // Angular connection
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', '..', 'client', 'dist', 'index.html'));
 });
 
 // Host the app
