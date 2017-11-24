@@ -9,10 +9,10 @@
 
     <form class="form-group">
       <label> Code: </label>
-      <input class="form-control" placeholder="hier eingeben" type="text" required />
+      <input [(ngModel)]="code" name="code" class="form-control" placeholder="hier eingeben" type="text" required />
 
       <label> Passwort: </label>
-      <input class="form-control" placeholder="hier eingeben" type="text" required />
+      <input [(ngModel)]="password" name="password" class="form-control" placeholder="hier eingeben" type="password" required />
 
       <small id="emailHelp" class="form-text text-muted"> Wenn du noch keine Login-Daten hast, fordere dir deine an </small>
 
@@ -23,7 +23,7 @@
         </label>
       </div>
 
-      <button class="btn btn-primary" type="submit"> Anmelden </button>
+      <button (click)="login()" class="btn btn-primary" type="submit"> Anmelden </button>
     </form>
 
   </section>

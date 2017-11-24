@@ -8,6 +8,7 @@ import { ApiService } from './shared/services/api.service';
 import { HomeModule } from './modules/home/home.module';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoginModule } from './modules/login/login.module';
+import { AccountsService } from './shared/services/accounts.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { LoginModule } from './modules/login/login.module';
     HomeModule,
     LoginModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, AccountsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
