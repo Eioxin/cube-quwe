@@ -11,7 +11,7 @@ gulp.task('start', function () {
 
 gulp.task('install', function () {
   process.chdir('client');
-  var client = spawn('yarn', [], { stdio: 'inherit' });
+  var client = spawn('npm', ['install'], { stdio: 'inherit' });
   process.chdir('../server');
-  var server = spawn('yarn', [], { stdio: 'inherit' });
+  var server = spawn('npm', ['install'], { stdio: 'inherit' });
 });

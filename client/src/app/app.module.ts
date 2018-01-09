@@ -8,6 +8,7 @@ import { ApiService } from './shared/services/api.service';
 import { HomeModule } from './modules/home/home.module';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoginModule } from './modules/login/login.module';
+import { CreatorModule } from './modules/creator/creator.module';
 import { AccountsService } from './shared/services/accounts.service';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AccountsService } from './shared/services/accounts.service';
     HttpModule,
     RouterModule.forRoot([]),
     HomeModule,
-    LoginModule
+    LoginModule,
+    CreatorModule
   ],
   providers: [ApiService, AccountsService],
   bootstrap: [AppComponent]

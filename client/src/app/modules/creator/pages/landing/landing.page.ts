@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { AccountsService } from '../../../../shared/services/accounts.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.css']
+  selector: 'app-landing',
+  templateUrl: './landing.page.html',
+  styleUrls: ['./landing.page.css']
 })
-export class LoginComponent {
+export class LandingComponent {
   code: string;
   password: string;
 
