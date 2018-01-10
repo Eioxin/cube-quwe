@@ -23,3 +23,8 @@ body {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.title {
+  font-size: 120px;
+  margin-bottom: 100px;
+}
