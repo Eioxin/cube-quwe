@@ -1,10 +1,8 @@
 import { Router } from 'express';
-import accountsRoute from './account';
-import generateRoute from './generate';
+import stationRunRoute from './stationrun';
 
 const api = Router();
 
-api.use('/account', accountsRoute);
-api.use('/generate', generateRoute);
+api.use('/stationrun', stationRunRoute);
 
 export default api;
