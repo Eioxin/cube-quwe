@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AccountsService } from '../../../../shared/services/accounts.service';
+import { Station } from '../../../../shared/models/station';
+import { isEmpty } from 'rxjs/operators/isEmpty';
 
 @Component({
   selector: 'app-landing',
@@ -9,10 +11,8 @@ import { AccountsService } from '../../../../shared/services/accounts.service';
 export class LandingComponent {
   code: string;
   password: string;
-  testArray: any[] = [
-    {name: 'second', description: 'aaa'},
-    {name: 'first', description: 'aaa'},
-    {name: 'third', description: 'aaa'}
+  stationlist: Station[] = [
+    {id: 1, name: 'neuer Stationslauf-Name', description: 'hier beschreiben'}
   ];
 
   constructor(private _accountsService: AccountsService) {}
@@ -26,10 +26,25 @@ export class LandingComponent {
   }
 
   add() {
+    var newid :number = 1;
+    let stationlist :Station[] = this.stationlist;
+    if (stationlist.length !== 0) {
+      newid = newid + stationlist[stationlist.length-1].id;
+    }
 
+    let toAddArray :Station = {id: newid, name: 'neuer Stationslauf-Name', description: 'hier beschreiben'};
+    stationlist.push(toAddArray);
   }
 
-  remove(){
+  remove(id :number){
+    let stationlist :Station[] = this.stationlist;
+
+    stationlist.forEach((element, index) => {
+      console.log(element.id)
+      if (element.id === id){
+        stationlist.splice(index, 1);
+      }
+    });
 
   }
 }

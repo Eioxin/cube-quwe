@@ -17,7 +17,7 @@
       <label> Stationen: </label>
       <div class="container">
         <div id="table" class="table-editable">
-          <span class="table-add glyphicon glyphicon-plus"></span>
+          <span (click)="add()" class="table-add glyphicon glyphicon-plus"></span>
           <table class="table">
             <tr>
               <th>Name</th>
@@ -25,11 +25,11 @@
               <th></th>
               <th></th>
             </tr>
-            <tr *ngFor="let item of testArray">
+            <tr *ngFor="let item of stationlist">
               <td contenteditable="true">{{item.name}}</td>
               <td contenteditable="true">{{item.description}}</td>
               <td>
-                <span (click)="remove()" class="table-remove glyphicon glyphicon-remove"></span>
+                <span (click)="remove(item.id)" class="table-remove glyphicon glyphicon-remove"></span>
               </td>
               <td>
                 <span (click)="up()" class="table-up glyphicon glyphicon-arrow-up"></span>
