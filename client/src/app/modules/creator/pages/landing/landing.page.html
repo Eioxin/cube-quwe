@@ -1,1 +1,46 @@
-erstellen
+
+<section class="container-fluid">
+  <h1 class="subtitle text-center"> Cube Quwe </h1>
+
+  <section class="col-md-6 col-md-offset-3 login-form">
+    <div class="text-center">
+      <h2> Stationslauf erstellen </h2>
+    </div>
+
+    <form class="form-group">
+      <label> Name: </label>
+      <input [(ngModel)]="name" name="name" class="form-control" placeholder="hier Name des Laufs eingeben" type="text" required />
+
+      <label> Beschreibung: </label>
+      <textarea [(ngModel)]="discription" name="discription" class="form-control" placeholder="hier eingeben" type="text" required> </textarea>
+
+      <label> Stationen: </label>
+      <div class="container">
+        <div id="table" class="table-editable">
+          <span class="table-add glyphicon glyphicon-plus"></span>
+          <table class="table">
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr *ngFor="let item of testArray">
+              <td contenteditable="true">{{item.name}}</td>
+              <td contenteditable="true">{{item.description}}</td>
+              <td>
+                <span (click)="remove()" class="table-remove glyphicon glyphicon-remove"></span>
+              </td>
+              <td>
+                <span (click)="up()" class="table-up glyphicon glyphicon-arrow-up"></span>
+                <span (click)="down()" class="table-down glyphicon glyphicon-arrow-down"></span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <button (click)="login()" class="btn btn-primary" type="submit"> Anmelden </button>
+    </form>
+
+  </section>
+</section>
