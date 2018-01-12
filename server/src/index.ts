@@ -1,7 +1,17 @@
 import * as express from 'express';
 import * as path from 'path';
 import * as bodyParser from 'body-parser';
+import * as firebase from 'firebase';
 const app = express();
+
+firebase.initializeApp({
+  apiKey: "AIzaSyDZ0_cPKIN1LWlKHbFRSjEqH7MNYSOxVz8",
+  authDomain: "cube-quwe.firebaseapp.com",
+  databaseURL: "https://cube-quwe.firebaseio.com",
+  projectId: "cube-quwe",
+  storageBucket: "cube-quwe.appspot.com",
+  messagingSenderId: "1052131879923"
+});
 
 // Routes
 import apiRoute from './routes/api';

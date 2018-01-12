@@ -1,60 +1,67 @@
 
 import { Observable } from 'rxjs/Observable';
+import * as firebase from 'firebase';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/fromPromise';
+
+const database = firebase.database();
 
 export class StationRun {
   id: string;
   started: boolean = false;
-  players: Player[] = [];
+  players: { [key: string]: Player } = {};
+  stations: { [key: string]: Station } = {};
 }
 
 export class Player {
   id: string;
 }
 
-const stationRuns: StationRun[] = [];
+export class Station {
+  id: string;
+}
 
 export class StationRunsService {
 
   static createStationRun(code: string): Observable<StationRun> {
-    /* TODO Datenbank */
     const stationRun = new StationRun();
     stationRun.id = code;
-    stationRuns.push(stationRun);
-    /* END */
+    database.ref('stationruns/' + code).set(stationRun);
     return Observable.of(stationRun);
   }
 
-  static getAllStationRuns(): Observable<StationRun[]> {
-    /* TODO Datenbank */
-    return Observable.of(stationRuns);
+  static getAllStationRuns(): Observable<any> {
+    return Observable.fromPromise(
+      database.ref('stationruns').once('value').then((snapshot) => {
+        return snapshot;
+      })
+    );
   }
 
-  static editStationRun(code: string, started: boolean): Observable<StationRun | undefined> {
-    /* TODO Datenbank */
-    const stationRun = stationRuns.find(run => run.id === code);
-    if (!stationRun) return Observable.of(undefined);
-    stationRun.started = started;
-    /* END */
-    return Observable.of(stationRun);
-  }
+  // static editStationRun(code: string, started: boolean): Observable<StationRun | undefined> {
+  //   /* TODO Datenbank */
+  //   const stationRun = stationRuns.find(run => run.id === code);
+  //   if (!stationRun) return Observable.of(undefined);
+  //   stationRun.started = started;
+  //   /* END */
+  //   return Observable.of(stationRun);
+  // }
 
-  static joinStationRun(runCode: string, playerCode: string): Observable<Player | undefined> {
+  static joinStationRun(runCode: string, playerCode: string): Observable<Player> {
     /* TODO Datenbank */
-    const stationRun = stationRuns.find(run => run.id === runCode);
-    if (!stationRun) return Observable.of(undefined);
     const player = new Player();
     player.id = playerCode;
-    stationRun.players.push(player);
-    /* END */
+
+    var updates: any = {};
+    updates['/stationruns/' + runCode + '/players/' + playerCode] = true;
+    database.ref().update(updates);
+    database.ref('players/' + player.id).set(player);
+
     return Observable.of(player);
   }
 
   static deleteStationRun(code: string): Observable<boolean> {
-    /* TODO Datenbank */
-    const stationRun = stationRuns.find(run => run.id === code);
-    if (!stationRun) return Observable.of(false);
-    stationRuns.splice(stationRuns.indexOf(stationRun), 1);
+    database.ref('stationruns/' + code).remove();
     return Observable.of(true);
   }
 }
