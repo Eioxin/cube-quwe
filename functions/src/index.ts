@@ -30,7 +30,10 @@ app.get('/:id/join', (req, res) => {
 app.get('/:id/station/create', (req, res) => {
   const code = randomstring.generate(6);
   return StationsService.createStation(req.params.id, code).then(station => {
-    if (!station) return res.status(500).end();
+    if (!station) {
+      res.status(500).end();
+      return;
+    }
 
     res.json({ id: station.id });
   });

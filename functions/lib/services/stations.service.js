@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Observable_1 = require("rxjs/Observable");
 const firebase = require("firebase-admin");
 require("rxjs/add/observable/of");
 require("rxjs/add/observable/fromPromise");
@@ -16,13 +15,14 @@ class StationsService {
         const updates = {};
         updates['stationruns/' + stationRunCode + '/stations/' + stationCode] = true;
         updates['stations/' + stationCode] = station;
-        database.ref().update(updates);
-        return Observable_1.Observable.of(station);
+        return database.ref().update(updates).then(() => {
+            return station;
+        });
     }
     static getAllStations() {
-        return Observable_1.Observable.fromPromise(database.ref('stations').once('value').then((snapshot) => {
+        return database.ref('stations').once('value').then((snapshot) => {
             return snapshot;
-        }));
+        });
     }
     // static editStationRun(code: string, started: boolean): Observable<StationRun | undefined> {
     //   /* TODO Datenbank */
@@ -33,8 +33,7 @@ class StationsService {
     //   return Observable.of(stationRun);
     // }
     static deleteStation(code) {
-        database.ref('stations/' + code).remove();
-        return Observable_1.Observable.of(true);
+        return database.ref('stations/' + code).remove();
     }
 }
 exports.StationsService = StationsService;
