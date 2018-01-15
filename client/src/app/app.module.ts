@@ -4,11 +4,10 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ApiService } from './shared/services/api.service';
+import { StationRunService } from './shared/services/stationruns.service';
 import { HomeModule } from './modules/home/home.module';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoginModule } from './modules/login/login.module';
-import { AccountsService } from './shared/services/accounts.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,7 @@ import { AccountsService } from './shared/services/accounts.service';
     HomeModule,
     LoginModule
   ],
-  providers: [ApiService, AccountsService],
+  providers: [StationRunService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

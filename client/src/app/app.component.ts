@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from './shared/services/api.service';
+import { StationRunService } from './shared/services/stationruns.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,7 @@ import { ApiService } from './shared/services/api.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private _apiService: ApiService) {
-    this._apiService.getAccountCode().subscribe(result => this.msg = result);
+  constructor(private _apiService: StationRunService) {
+    this._apiService.createStationRun().subscribe(result => console.log(result));
   }
-
-  msg = '';
 }
