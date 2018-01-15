@@ -1,9 +1,7 @@
+import * as firebase from 'firebase-admin';
+import * as functions from 'firebase-functions';
 
-import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/fromPromise';
-
+firebase.initializeApp(functions.config().firebase);
 const database = firebase.database();
 
 export class StationRun {
@@ -23,19 +21,18 @@ export class Station {
 
 export class StationRunsService {
 
-  static createStationRun(code: string): Observable<StationRun> {
+  static createStationRun(code: string): Promise<any> {
     const stationRun = new StationRun();
     stationRun.id = code;
-    database.ref('stationruns/' + code).set(stationRun);
-    return Observable.of(stationRun);
+    return database.ref('stationruns/' + code).set(stationRun).then(() => {
+      return stationRun;
+    });
   }
 
-  static getAllStationRuns(): Observable<any> {
-    return Observable.fromPromise(
-      database.ref('stationruns').once('value').then((snapshot) => {
-        return snapshot;
-      })
-    );
+  static getAllStationRuns(): Promise<any> {
+    return database.ref('stationruns').once('value').then((snapshot) => {
+      return snapshot;
+    });
   }
 
   // static editStationRun(code: string, started: boolean): Observable<StationRun | undefined> {
@@ -47,21 +44,19 @@ export class StationRunsService {
   //   return Observable.of(stationRun);
   // }
 
-  static joinStationRun(runCode: string, playerCode: string): Observable<Player> {
+  static joinStationRun(runCode: string, playerCode: string): Promise<Player> {
     /* TODO Datenbank */
     const player = new Player();
     player.id = playerCode;
 
-    var updates: any = {};
+    const updates: any = {};
     updates['/stationruns/' + runCode + '/players/' + playerCode] = true;
-    database.ref().update(updates);
-    database.ref('players/' + player.id).set(player);
-
-    return Observable.of(player);
+    return database.ref().update(updates).then(() => {
+      return database.ref('players/' + player.id).set(player).then(() => player);
+    });
   }
 
-  static deleteStationRun(code: string): Observable<boolean> {
-    database.ref('stationruns/' + code).remove();
-    return Observable.of(true);
+  static deleteStationRun(code: string): Promise<any> {
+    return database.ref('stationruns/' + code).remove();
   }
 }

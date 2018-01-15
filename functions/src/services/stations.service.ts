@@ -1,6 +1,6 @@
 
 import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase-admin';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromPromise';
 
@@ -13,7 +13,7 @@ export class Station {
 
 export class StationsService {
 
-  static createStation(stationRunCode: string, stationCode: string): Observable<Station> {
+  static createStation(stationRunCode: string, stationCode: string): Promise<any> {
     const station = new Station();
     station.id = stationCode;
     station.stationRunCode = stationRunCode;
@@ -22,16 +22,15 @@ export class StationsService {
     updates['stationruns/' + stationRunCode + '/stations/' + stationCode] = true;
     updates['stations/' + stationCode] = station;
 
-    database.ref().update(updates);
-    return Observable.of(station);
+    return database.ref().update(updates).then(() => {
+      return station;
+    });
   }
 
-  static getAllStations(): Observable<any> {
-    return Observable.fromPromise(
-      database.ref('stations').once('value').then((snapshot) => {
-        return snapshot;
-      })
-    );
+  static getAllStations(): Promise<any> {
+    return database.ref('stations').once('value').then((snapshot) => {
+      return snapshot;
+    })
   }
 
   // static editStationRun(code: string, started: boolean): Observable<StationRun | undefined> {
@@ -43,8 +42,7 @@ export class StationsService {
   //   return Observable.of(stationRun);
   // }
 
-  static deleteStation(code: string): Observable<boolean> {
-    database.ref('stations/' + code).remove();
-    return Observable.of(true);
+  static deleteStation(code: string): Promise<any> {
+    return database.ref('stations/' + code).remove();
   }
 }
