@@ -3,7 +3,7 @@
   <div class="text-center">
     <h2> Stationslauf erstellen </h2>
   </div>
-  <form class="form-group">
+  <form class="form-group" (submit)="create()">
     <label> Name: </label>
     <input [(ngModel)]="name" name="name" class="form-control" placeholder="hier Name des Laufs eingeben" type="text" required />
     <label> Beschreibung: </label>
@@ -34,7 +34,7 @@
         </table>
       </div>
     </div>
-    <button (click)="login()" class="btn btn-primary" type="submit">Erstellen</button>
+    <button class="btn btn-primary" type="submit">Erstellen</button>
   </form>
 
 </section>

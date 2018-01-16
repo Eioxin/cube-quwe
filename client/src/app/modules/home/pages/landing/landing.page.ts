@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StationRunService } from '../../../../shared/services/stationruns.service';
 
 @Component({
   selector: 'app-landing',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./landing.page.css']
 })
 export class LandingComponent {
+
   code: string;
   password: string;
   testArray: any[] = [
@@ -14,7 +16,13 @@ export class LandingComponent {
     {name: 'third', description: 'aaa'}
   ];
 
-  constructor() {}
+  constructor(private _stationRunService: StationRunService) { }
+
+  create() {
+    this._stationRunService.createStationRun().subscribe(result => {
+      console.log(result);
+    });
+  }
 
   up() {}
 
