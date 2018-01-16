@@ -6,6 +6,7 @@ const database = firebase.database();
 
 export class StationRun {
   id: string;
+  ownerId: string;
   started: boolean = false;
   players: { [key: string]: Player } = {};
   stations: { [key: string]: Station } = {};
@@ -21,10 +22,17 @@ export class Station {
 
 export class StationRunsService {
 
-  static createStationRun(code: string): Promise<any> {
+  static createStationRun(code: string, ownerId: string): Promise<any> {
     const stationRun = new StationRun();
+    const owner = new Player();
     stationRun.id = code;
-    return database.ref('stationruns/' + code).set(stationRun).then(() => {
+    stationRun.ownerId = ownerId;
+    owner.id = ownerId;
+
+    const updates = {};
+    updates['stationruns/' + code] = stationRun;
+    updates['players/' + ownerId] = owner;
+    return database.ref().update(updates).then(() => {
       return stationRun;
     });
   }

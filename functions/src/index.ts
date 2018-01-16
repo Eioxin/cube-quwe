@@ -10,8 +10,9 @@ app.use(cors({ origin: true }));
 
 app.get('/create', (req, res) => {
   const code = randomstring.generate(6);
-  return StationRunsService.createStationRun(code).then(run => {
-    res.json({ id: run.id });
+  const ownerId = randomstring.generate(6);
+  return StationRunsService.createStationRun(code, ownerId).then(run => {
+    res.json(run);
   });
 });
 
@@ -23,7 +24,7 @@ app.get('/:id/join', (req, res) => {
       return;
     }
 
-    res.json({ id: player.id });
+    res.json(player);
   });
 });
 
@@ -35,7 +36,7 @@ app.get('/:id/station/create', (req, res) => {
       return;
     }
 
-    res.json({ id: station.id });
+    res.json(station);
   });
 });
 

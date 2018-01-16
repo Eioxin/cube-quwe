@@ -19,10 +19,16 @@ class Station {
 }
 exports.Station = Station;
 class StationRunsService {
-    static createStationRun(code) {
+    static createStationRun(code, ownerId) {
         const stationRun = new StationRun();
+        const owner = new Player();
         stationRun.id = code;
-        return database.ref('stationruns/' + code).set(stationRun).then(() => {
+        stationRun.ownerId = ownerId;
+        owner.id = ownerId;
+        const updates = {};
+        updates['stationruns/' + code] = stationRun;
+        updates['players/' + ownerId] = owner;
+        return database.ref().update(updates).then(() => {
             return stationRun;
         });
     }
