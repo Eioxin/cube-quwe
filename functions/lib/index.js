@@ -6,8 +6,8 @@ const stations_service_1 = require("./services/stations.service");
 const randomstring = require("randomstring");
 const express = require("express");
 const app = express();
-// Start writing Firebase Functions
-// https://firebase.google.com/functions/write-firebase-functions
+const cors = require('cors');
+app.use(cors({ origin: true }));
 app.get('/create', (req, res) => {
     const code = randomstring.generate(6);
     return stationruns_service_1.StationRunsService.createStationRun(code).then(run => {

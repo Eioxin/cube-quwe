@@ -8,7 +8,7 @@ export class StationRunService {
   constructor(private _http: Http) { }
 
   createStationRun(): Observable<string> {
-    return this._http.get('https://us-central1-cube-quwe.cloudfunctions.net/station/create').pipe(
+    return this._http.get('https://us-central1-cube-quwe.cloudfunctions.net/stationruns/create').pipe(
       map((response: Response) => response.json().id)
     );
   }

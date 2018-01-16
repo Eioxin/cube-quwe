@@ -4,10 +4,9 @@ import { StationsService } from './services/stations.service';
 import * as randomstring from 'randomstring';
 import * as express from 'express';
 const app = express();
-const cors = require('cors')({origin: true});
+const cors = require('cors');
 
-// Start writing Firebase Functions
-// https://firebase.google.com/functions/write-firebase-functions
+app.use(cors({ origin: true }));
 
 app.get('/create', (req, res) => {
   const code = randomstring.generate(6);
