@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AccountsService } from '../../../../shared/services/accounts.service';
 
 @Component({
   selector: 'app-landing',
@@ -15,21 +14,13 @@ export class LandingComponent {
     {name: 'third', description: 'aaa'}
   ];
 
-  constructor(private _accountsService: AccountsService) {}
+  constructor() {}
 
-  up() {
-    
-  }
+  up() {}
 
-  down() {
+  down() {}
 
-  }
+  add() {}
 
-  add() {
-
-  }
-
-  remove(){
-
-  }
+  remove() {}
 }
