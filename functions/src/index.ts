@@ -28,6 +28,12 @@ app.get('/:id/join', (req, res) => {
   });
 });
 
+app.get('/:id/remove', (req, res) => {
+  return StationRunsService.deleteStationRun(req.params.id).then(() => {
+    res.json(true);
+  });
+});
+
 app.get('/:id/station/create', (req, res) => {
   const code = randomstring.generate(6);
   return StationsService.createStation(req.params.id, code).then(station => {

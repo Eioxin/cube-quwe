@@ -25,6 +25,11 @@ app.get('/:id/join', (req, res) => {
         res.json(player);
     });
 });
+app.get('/:id/remove', (req, res) => {
+    return stationruns_service_1.StationRunsService.deleteStationRun(req.params.id).then(() => {
+        res.json(true);
+    });
+});
 app.get('/:id/station/create', (req, res) => {
     const code = randomstring.generate(6);
     return stations_service_1.StationsService.createStation(req.params.id, code).then(station => {

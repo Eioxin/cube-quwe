@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 export class StationRun {
   id: string;
@@ -24,25 +25,31 @@ export class StationRunService {
   constructor(private _http: Http) { }
 
   createStationRun(): Observable<StationRun> {
-    return this._http.get('https://us-central1-cube-quwe.cloudfunctions.net/stationruns/create').pipe(
+    return this._http.get(`${environment.api}/stationruns/create`).pipe(
       map((response: Response) => response.json())
     );
   }
 
   joinStationRun(id: string): Observable<Player> {
-    return this._http.get(`https://us-central1-cube-quwe.cloudfunctions.net/stationruns/${id}/join`).pipe(
+    return this._http.get(`${environment.api}/stationruns/${id}/join`).pipe(
+      map((response: Response) => response.json())
+    );
+  }
+
+  removeStationRun(id: string): Observable<boolean> {
+    return this._http.get(`${environment.api}/stationruns/${id}/remove`).pipe(
       map((response: Response) => response.json())
     );
   }
 
   createStation(id: string): Observable<Station> {
-    return this._http.get(`https://us-central1-cube-quwe.cloudfunctions.net/stationruns/${id}/station/create`).pipe(
+    return this._http.get(`${environment.api}/stationruns/${id}/station/create`).pipe(
       map((response: Response) => response.json())
     );
   }
 
-  removeStation(stationRunId: string, stationId: string): Observable<Station> {
-    return this._http.get(`https://us-central1-cube-quwe.cloudfunctions.net/stationruns/${stationRunId}/station/${stationId}/remove`).pipe(
+  removeStation(stationRunId: string, stationId: string): Observable<boolean> {
+    return this._http.get(`${environment.api}/stationruns/${stationRunId}/station/${stationId}/remove`).pipe(
       map((response: Response) => response.json())
     );
   }

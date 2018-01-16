@@ -6,22 +6,18 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { StationRunService } from './shared/services/stationruns.service';
 import { HomeModule } from './modules/home/home.module';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoginModule } from './modules/login/login.module';
-import { CreatorModule } from './modules/creator/creator.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot([]),
     HomeModule,
-    LoginModule,
-    CreatorModule
+    LoginModule
   ],
   providers: [StationRunService],
   bootstrap: [AppComponent]
