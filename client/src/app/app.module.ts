@@ -8,6 +8,7 @@ import { StationRunService } from './shared/services/stationruns.service';
 import { HomeModule } from './modules/home/home.module';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { LoginModule } from './modules/login/login.module';
+import { CreatorModule } from './modules/creator/creator.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoginModule } from './modules/login/login.module';
     HttpModule,
     RouterModule.forRoot([]),
     HomeModule,
-    LoginModule
+    LoginModule,
+    CreatorModule
   ],
   providers: [StationRunService],
   bootstrap: [AppComponent]

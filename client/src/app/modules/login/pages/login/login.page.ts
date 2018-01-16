@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AccountsService } from '../../../../shared/services/accounts.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  code: string;
+  password: string;
 
-  constructor() { }
+  constructor(private _accountsService: AccountsService) {}
 
-  ngOnInit() {
+  login() {
+    // TODO login from service
   }
-
 }
