@@ -24,23 +24,23 @@ export class LandingComponent {
     });
   }
 
-  up() {}
-    var newid :number = 1;
-    let stationlist :Station[] = this.stationlist;
+  up() {
+    let newid = 1;
+    const stationlist = this.stationlist;
     if (stationlist.length !== 0) {
-      newid = newid + stationlist[stationlist.length-1].id;
+      newid = newid + stationlist[stationlist.length - 1].id;
     }
 
-    let toAddArray :Station = {id: newid, name: 'neuer Stationslauf-Name', description: 'hier beschreiben'};
+    const toAddArray = {id: newid, name: 'neuer Stationslauf-Name', description: 'hier beschreiben'};
     stationlist.push(toAddArray);
   }
 
-  remove(id :number){
-    let stationlist :Station[] = this.stationlist;
+  remove(id: number) {
+    const stationlist = this.stationlist;
 
     stationlist.forEach((element, index) => {
-      console.log(element.id)
-      if (element.id === id){
+      console.log(element.id);
+      if (element.id === id) {
         stationlist.splice(index, 1);
       }
     });
