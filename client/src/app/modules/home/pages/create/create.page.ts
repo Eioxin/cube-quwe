@@ -12,15 +12,15 @@ export class CreateComponent {
 
   code: string;
   password: string;
-  stationlist: Station[] = [
-    {id: 1, name: 'neuer Stationslauf-Name', description: 'hier beschreiben'}
-  ];
+  stationlist: Station[] = [];
 
   constructor(private _stationRunService: StationRunService) { }
 
   create() {
     this._stationRunService.createStationRun().subscribe(result => {
-      console.log(result);
+      this.stationlist.forEach(station => {
+        this._stationRunService.createStation(station.id);
+      });
     });
   }
 

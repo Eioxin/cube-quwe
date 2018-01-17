@@ -1,6 +1,5 @@
 export class Station {
-    id: number;
+    id: string;
     name: string;
     description: string;
   }
-  
