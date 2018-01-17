@@ -4,11 +4,11 @@ import { Station } from '../../../../shared/models/station';
 import { isEmpty } from 'rxjs/operators/isEmpty';
 
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.page.html',
-  styleUrls: ['./landing.page.css']
+  selector: 'app-create',
+  templateUrl: './create.page.html',
+  styleUrls: ['./create.page.css']
 })
-export class LandingComponent {
+export class CreateComponent {
 
   code: string;
   password: string;

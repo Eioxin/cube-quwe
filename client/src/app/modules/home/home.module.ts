@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.page';
-import { LandingComponent } from './pages/landing/landing.page';
+import { CreateComponent } from './pages/create/create.page';
 import { routes } from './home.routes';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { routes } from './home.routes';
   ],
   declarations: [
     HomeComponent,
-    LandingComponent
+    CreateComponent
   ]
 })
 export class HomeModule { }
