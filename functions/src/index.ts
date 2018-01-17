@@ -36,7 +36,8 @@ app.get('/:id/remove', (req, res) => {
 
 app.get('/:id/station/create', (req, res) => {
   const code = randomstring.generate(6);
-  return StationsService.createStation(req.params.id, code).then(station => {
+  const { name, description } = req.query;
+  return StationsService.createStation(req.params.id, code, name, description).then(station => {
     if (!station) {
       res.status(500).end();
       return;

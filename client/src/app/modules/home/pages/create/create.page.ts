@@ -19,7 +19,7 @@ export class CreateComponent {
   create() {
     this._stationRunService.createStationRun().subscribe(result => {
       this.stationlist.forEach(station => {
-        this._stationRunService.createStation(station.id);
+        this._stationRunService.createStation(result.id, station.name, station.description).subscribe();
       });
     });
   }

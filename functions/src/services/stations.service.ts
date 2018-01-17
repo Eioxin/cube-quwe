@@ -9,14 +9,18 @@ const database = firebase.database();
 export class Station {
   id: string;
   stationRunCode: string;
+  name: string;
+  description: string;
 }
 
 export class StationsService {
 
-  static createStation(stationRunCode: string, stationCode: string): Promise<any> {
+  static createStation(stationRunCode: string, stationCode: string, name: string, description: string): Promise<any> {
     const station = new Station();
     station.id = stationCode;
     station.stationRunCode = stationRunCode;
+    station.name = name;
+    station.description = description;
 
     const updates: any = {};
     updates['stationruns/' + stationRunCode + '/stations/' + stationCode] = true;

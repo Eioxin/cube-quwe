@@ -42,8 +42,8 @@ export class StationRunService {
     );
   }
 
-  createStation(id: string): Observable<Station> {
-    return this._http.get(`${environment.api}/stationruns/${id}/station/create`).pipe(
+  createStation(id: string, name: string, description: string): Observable<Station> {
+    return this._http.get(`${environment.api}/stationruns/${id}/station/create`, { params: { name, description } }).pipe(
       map((response: Response) => response.json())
     );
   }
