@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AccountsService } from '../../../../shared/services/accounts.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +9,7 @@ export class HomeComponent {
   code: string;
   password: string;
 
-  constructor(private _accountsService: AccountsService) {}
+  constructor() {}
 
   login() {
     // TODO login from service
