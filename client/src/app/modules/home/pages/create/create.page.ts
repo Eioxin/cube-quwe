@@ -24,26 +24,35 @@ export class CreateComponent {
     });
   }
 
-  up() {
-    let newid = 1;
-    const stationlist = this.stationlist;
-    if (stationlist.length !== 0) {
-      newid = newid + stationlist[stationlist.length - 1].id;
-    }
-
-    const toAddArray = {id: newid, name: 'neuer Stationslauf-Name', description: 'hier beschreiben'};
-    stationlist.push(toAddArray);
+  add() {
+    const newStation = new Station();
+    newStation.name = 'Neue Station';
+    this.stationlist.push(newStation);
   }
 
-  remove(id: number) {
-    const stationlist = this.stationlist;
+  up(item: Station) {
+    const index = this.stationlist.indexOf(item);
 
-    stationlist.forEach((element, index) => {
-      console.log(element.id);
-      if (element.id === id) {
-        stationlist.splice(index, 1);
-      }
-    });
+    if (index === 0) {
+      return;
+    }
 
+    this.stationlist.splice(index, 1);
+    this.stationlist.splice(index - 1, 0, item);
+  }
+
+  down(item: Station) {
+    const index = this.stationlist.indexOf(item);
+
+    if (index === this.stationlist.length - 1) {
+      return;
+    }
+
+    this.stationlist.splice(index, 1);
+    this.stationlist.splice(index + 1, 0, item);
+  }
+
+  remove(item: Station) {
+    this.stationlist.splice(this.stationlist.indexOf(item), 1);
   }
 }
