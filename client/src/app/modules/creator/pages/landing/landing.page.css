@@ -1,3 +1,8 @@
+.title {
+  font-size: 120px;
+  margin-bottom: 100px;
+}
+
 .login-form {
   background: #D0D0D0;
   padding-top: 15px;
@@ -5,41 +10,4 @@
 
 input {
   margin-bottom: 10px;
-}
-
-textarea {
-  resize: none;
-}
-
-.container {
-  width: 100%;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.table-editable {
-  position: relative;
-}
-
-.glyphicon {
-  font-size: 20px;
-}
-
-.table-remove {
-  color: #700;
-  cursor: pointer;
-}
-
-.table-up, .table-down {
-  color: #007;
-  cursor: pointer;
-}
-
-.table-add {
-  color: #070;
-  cursor: pointer;
-  position: absolute;
-  top: 8px;
-  right: 0;
 }

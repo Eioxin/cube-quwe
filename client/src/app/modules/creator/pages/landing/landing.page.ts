@@ -9,27 +9,10 @@ import { AccountsService } from '../../../../shared/services/accounts.service';
 export class LandingComponent {
   code: string;
   password: string;
-  testArray: any[] = [
-    {name: 'second', description: 'aaa'},
-    {name: 'first', description: 'aaa'},
-    {name: 'third', description: 'aaa'}
-  ];
 
   constructor(private _accountsService: AccountsService) {}
 
-  up() {
-    
-  }
-
-  down() {
-
-  }
-
-  add() {
-
-  }
-
-  remove(){
-
+  login() {
+    // TODO login from service
   }
 }
