@@ -28,3 +28,15 @@ body {
   font-size: 120px;
   margin-bottom: 100px;
 }
+
+.container {
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  margin-bottom: 10px;
+}

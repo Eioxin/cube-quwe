@@ -1,26 +1,15 @@
-.title {
-  font-size: 120px;
-  margin-bottom: 100px;
-}
 
 .login-form {
   background: #D0D0D0;
   padding-top: 15px;
 }
 
-input {
-  margin-bottom: 10px;
+label {
+  margin-top: 10px;
 }
 
 textarea {
   resize: none;
-}
-
-.container {
-  width: 100%;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
 .table-editable {
