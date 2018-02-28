@@ -15,3 +15,10 @@ textarea {
 .table-editable {
   position: relative;
 }
+
+.Stationbuttons {
+  position: relative;
+  width: 100%;
+  height: 100px; 
+  background: #D0D0D0;
+}

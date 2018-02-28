@@ -4,22 +4,10 @@
     <h2> [Stationslaufname] </h2>
   </div>
   <form class="form-group" (submit)="create()">
-    <label> Teilnehmer: </label>
-    <div class="container">
-      <div id="table" class="table-editable">
-        <table class="table">
-          <tr>
-            <th>Code</th>
-            <th>Benutzername</th>
-          </tr>
-          <tr *ngFor="let item of stationlist">
-            <td contenteditable="false">{{item.name}}</td>
-            <td contenteditable="true">{{item.description}}</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <button class="btn btn-primary" type="submit" routerLink="" >Stationslauf starten</button>
+    <button class="btn btn-success" style="width:49%"> Station1 <br> Start </button>
+    <button class="btn btn-success" style="width:49%"> Station2 <br> Start </button>
+    <button class="btn btn-success" style="width:49%"> Station3 <br> Start </button>
+    <button class="btn btn-success" style="width:49%"> Station4 <br> Start </button>
     <button class="btn btn-primary" routerLink="" > Zurück </button>
   </form>
 
