@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { QueueComponent } from './pages/queue/queue.page';
+import { PlayerViewComponent } from './pages/playerview/playerview.page';
+import { CreatorViewComponent } from './pages/creatorview/creatorview.page';
 import { routes } from './stationrun.routes';
 
 @NgModule({
@@ -12,7 +14,9 @@ import { routes } from './stationrun.routes';
     RouterModule.forChild(routes)
   ],
   declarations: [
-    QueueComponent
+    QueueComponent,
+    PlayerViewComponent,
+    CreatorViewComponent
   ]
 })
 export class StationrunModule { }
