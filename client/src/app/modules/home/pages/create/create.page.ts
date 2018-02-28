@@ -18,6 +18,7 @@ export class CreateComponent {
 
   create() {
     this._stationRunService.createStationRun().subscribe(result => {
+      console.log(result)
       this.stationlist.forEach(station => {
         this._stationRunService.createStation(result.id, station.name, station.description).subscribe();
       });
