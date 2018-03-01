@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 export class StationRun {
   id: string;
@@ -22,36 +23,45 @@ export class Station {
 
 @Injectable()
 export class StationRunService {
-  constructor(private _http: Http) { }
+  constructor(private _http: Http, private database: AngularFireDatabase) {}
 
-  createStationRun(): Observable<StationRun> {
-    return this._http.get(`${environment.api}/stationruns/create`).pipe(
-      map((response: Response) => response.json())
-    );
+  createStationRun(name, description): Observable<StationRun> {
+    return this._http
+      .post(`${environment.api}/stationruns/create`, { name, description })
+      .pipe(map((response: Response) => response.json()));
   }
 
   joinStationRun(id: string): Observable<Player> {
-    return this._http.get(`${environment.api}/stationruns/${id}/join`).pipe(
-      map((response: Response) => response.json())
-    );
+    return this._http
+      .get(`${environment.api}/stationruns/${id}/join`)
+      .pipe(map((response: Response) => response.json()));
   }
 
   removeStationRun(id: string): Observable<boolean> {
-    return this._http.get(`${environment.api}/stationruns/${id}/remove`).pipe(
-      map((response: Response) => response.json())
-    );
+    return this._http
+      .get(`${environment.api}/stationruns/${id}/remove`)
+      .pipe(map((response: Response) => response.json()));
   }
 
-  createStation(id: string, name: string, description: string): Observable<Station> {
-    return this._http.get(`${environment.api}/stationruns/${id}/station/create`, { params: { name, description } }).pipe(
-      map((response: Response) => response.json())
-    );
+  createStation(
+    id: string,
+    name: string,
+    description: string
+  ): Observable<Station> {
+    return this._http
+      .get(`${environment.api}/stationruns/${id}/station/create`, {
+        params: { name, description }
+      })
+      .pipe(map((response: Response) => response.json()));
   }
 
   removeStation(stationRunId: string, stationId: string): Observable<boolean> {
-    return this._http.get(`${environment.api}/stationruns/${stationRunId}/station/${stationId}/remove`).pipe(
-      map((response: Response) => response.json())
-    );
+    return this._http
+      .get(
+        `${
+          environment.api
+        }/stationruns/${stationRunId}/station/${stationId}/remove`
+      )
+      .pipe(map((response: Response) => response.json()));
   }
-
 }

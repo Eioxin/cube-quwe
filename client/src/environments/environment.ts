@@ -5,5 +5,13 @@
 
 export const environment = {
   production: false,
-  api: 'https://us-central1-cube-quwe.cloudfunctions.net'
+  api: 'http://localhost:9000/cube-quwe/us-central1',
+  firebase: {
+    apiKey: 'AIzaSyDZ0_cPKIN1LWlKHbFRSjEqH7MNYSOxVz8',
+    authDomain: 'cube-quwe.firebaseapp.com',
+    databaseURL: 'https://cube-quwe.firebaseio.com',
+    projectId: 'cube-quwe',
+    storageBucket: 'cube-quwe.appspot.com',
+    messagingSenderId: '1052131879923'
+  }
 };

@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.page';
-import { RegisterComponent } from './pages/register/register.page';
 import { routes } from './login.routes';
 
 @NgModule({
@@ -13,8 +12,7 @@ import { routes } from './login.routes';
     RouterModule.forChild(routes)
   ],
   declarations: [
-    LoginComponent,
-    RegisterComponent
+    LoginComponent
   ]
 })
 export class LoginModule { }

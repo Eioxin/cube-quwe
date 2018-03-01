@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { StationRunService } from '../../../../shared/services/stationruns.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +11,11 @@ export class LoginComponent {
   code: string;
   password: string;
 
-  constructor() {}
+  constructor(private stationRuns: StationRunService, private router: Router) {}
 
-  login() {
-    // TODO login from service
+  join() {
+    this.stationRuns.joinStationRun(this.code).subscribe(result => {
+      this.router.navigate([`${result.id}/playerview`]);
+    });
   }
 }

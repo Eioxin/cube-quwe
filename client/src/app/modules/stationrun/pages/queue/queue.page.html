@@ -1,0 +1,25 @@
+<h1 class="subtitle text-center"> Cube Quwe </h1>
+<section class="col-md-6 col-md-offset-3 login-form">
+  <div class="text-center">
+    <h2>{{name}}</h2>
+    <h3>{{code}}</h3>
+  </div>
+  <form class="form-group" (submit)="start()">
+    <label> Teilnehmer: </label>
+    <div class="container">
+      <div id="table" class="table-editable">
+        <table class="table">
+          <tr>
+            <th>Code</th>
+          </tr>
+          <tr *ngFor="let player of players">
+            <td>{{player}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Stationslauf starten</button>
+    <button class="btn btn-primary" routerLink="/create"> Zurück </button>
+  </form>
+
+</section>

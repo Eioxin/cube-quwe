@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { StationRunService } from '../../../../shared/services/stationruns.service';
 import { Station } from '../../../../shared/models/station';
 import { isEmpty } from 'rxjs/operators/isEmpty';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -9,19 +10,29 @@ import { isEmpty } from 'rxjs/operators/isEmpty';
   styleUrls: ['./create.page.css']
 })
 export class CreateComponent {
-
+  name = '';
+  description = '';
   code: string;
   password: string;
   stationlist: Station[] = [];
 
-  constructor(private _stationRunService: StationRunService) { }
+  constructor(
+    private _stationRunService: StationRunService,
+    private router: Router
+  ) {}
 
   create() {
-    this._stationRunService.createStationRun().subscribe(result => {
-      this.stationlist.forEach(station => {
-        this._stationRunService.createStation(result.id, station.name, station.description).subscribe();
+    this._stationRunService
+      .createStationRun(this.name, this.description)
+      .subscribe(result => {
+        this.stationlist.forEach(station => {
+          this._stationRunService
+            .createStation(result.id, station.name, station.description)
+            .subscribe();
+        });
+
+        this.router.navigate([`${result.id}/queue`]);
       });
-    });
   }
 
   add() {

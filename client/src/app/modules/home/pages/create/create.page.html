@@ -5,9 +5,10 @@
   </div>
   <form class="form-group" (submit)="create()">
     <label> Name: </label>
-    <input [(ngModel)]="name" name="name" class="form-control" placeholder="hier Name des Laufs eingeben" type="text" required />
+    <input [(ngModel)]="name" name="name" class="form-control" placeholder="hier Name des Laufs eingeben" type="text" required
+    />
     <label> Beschreibung: </label>
-    <textarea [(ngModel)]="discription" name="discription" class="form-control" placeholder="hier eingeben" type="text" required> </textarea>
+    <textarea [(ngModel)]="description" name="description" class="form-control" placeholder="hier eingeben" type="text" required> </textarea>
 
     <label> Stationen: </label>
     <div class="container">
@@ -21,8 +22,12 @@
             <th></th>
           </tr>
           <tr *ngFor="let item of stationlist">
-            <td contenteditable="true">{{item.name}}</td>
-            <td contenteditable="true">{{item.description}}</td>
+            <td>
+              <input [(ngModel)]="item.name" name="stationName" />
+            </td>
+            <td>
+              <input [(ngModel)]="item.description" name="stationDesc" />
+            </td>
             <td>
               <span (click)="remove(item)" class="table-remove glyphicon glyphicon-remove"></span>
             </td>
@@ -35,6 +40,7 @@
       </div>
     </div>
     <button class="btn btn-primary" type="submit">Erstellen</button>
+    <button class="btn btn-primary" routerLink=""> Zurück </button>
   </form>
 
 </section>

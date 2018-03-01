@@ -8,10 +8,16 @@ const cors = require('cors');
 
 app.use(cors({ origin: true }));
 
-app.get('/create', (req, res) => {
+app.post('/create', (req, res) => {
+  const { name, description } = req.body;
   const code = randomstring.generate(6);
   const ownerId = randomstring.generate(6);
-  return StationRunsService.createStationRun(code, ownerId).then(run => {
+  return StationRunsService.createStationRun(
+    name,
+    description,
+    code,
+    ownerId
+  ).then(run => {
     res.json(run);
   });
 });
@@ -37,7 +43,12 @@ app.get('/:id/remove', (req, res) => {
 app.get('/:id/station/create', (req, res) => {
   const code = randomstring.generate(6);
   const { name, description } = req.query;
-  return StationsService.createStation(req.params.id, code, name, description).then(station => {
+  return StationsService.createStation(
+    req.params.id,
+    code,
+    name,
+    description
+  ).then(station => {
     if (!station) {
       res.status(500).end();
       return;
