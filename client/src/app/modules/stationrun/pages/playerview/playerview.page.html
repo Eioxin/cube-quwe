@@ -4,15 +4,13 @@
     <h2>{{name}}</h2>
   </div>
   <form class="form-group" (submit)="create()">
-    <button class="btn btn-success" style="width:49%"> Station1
-      <br> Start </button>
-    <button class="btn btn-success" style="width:49%"> Station2
-      <br> Start </button>
-    <button class="btn btn-success" style="width:49%"> Station3
-      <br> Start </button>
-    <button class="btn btn-success" style="width:49%"> Station4
-      <br> Start </button>
-    <button class="btn btn-primary" routerLink=""> Zurück </button>
+    <div class="fullsize">
+      <button class="btn btn-success btn-view-width" > Station1 <br> Start </button>
+      <button class="btn btn-danger btn-view-width"> Station2 <br> Stop </button>
+      <button class="btn btn-default disabled btn-view-width" disabled> Station3 <br> beendet </button>
+    </div>
+    <button class="btn btn-primary" routerLink="" > Zurück </button>
+
   </form>
 
 </section>
