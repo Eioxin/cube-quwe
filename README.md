@@ -28,8 +28,7 @@ or
 npm install
 ```
 
-3.  Setup database (TODO)
-4.  Run the project (runs client builder with watch and webserver)
+3.  Run the project (runs client builder with watch and webserver)
 
 ```
 yarn start
@@ -41,7 +40,7 @@ or
 npm start
 ```
 
-5.  Open http://localhost:4200/ on your browser
+4.  Open http://localhost:4200/ on your browser
 
 ## Built With
 
