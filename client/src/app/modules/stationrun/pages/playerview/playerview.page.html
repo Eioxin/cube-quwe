@@ -2,15 +2,21 @@
 <section class="col-md-6 col-md-offset-3 login-form">
   <div class="text-center">
     <h2>{{name}}</h2>
+    <h4>Started: {{started$ | async}}</h4>
   </div>
-  <form class="form-group" (submit)="create()">
-    <div class="fullsize">
-      <button class="btn btn-success btn-view-width" > Station1 <br> Start </button>
-      <button class="btn btn-danger btn-view-width"> Station2 <br> Stop </button>
-      <button class="btn btn-default disabled btn-view-width" disabled> Station3 <br> beendet </button>
+  <div *ngIf="player$ | async as player">
+    <div class="fullsize" *ngFor="let station of stations">
+      <button class="btn btn-success btn-view-width" *ngIf="player.stations[station.id].status === 'notstarted'" (click)="startStation(station.id)">
+        {{station.name}}
+        <br> Start </button>
+      <button class="btn btn-danger btn-view-width" *ngIf="player.stations[station.id].status === 'started'" (click)="stopStation(station.id)">
+        {{station.name}}
+        <br> Stop </button>
+      <button class="btn btn-default disabled btn-view-width" disabled *ngIf="player.stations[station.id].status === 'done'"> {{station.name}}
+        <br> beendet </button>
     </div>
-    <button class="btn btn-primary" routerLink="" > Zurück </button>
+    <button class="btn btn-primary" routerLink=""> Zurück </button>
 
-  </form>
+  </div>
 
 </section>

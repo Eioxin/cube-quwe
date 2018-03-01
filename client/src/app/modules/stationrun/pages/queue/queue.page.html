@@ -4,7 +4,7 @@
     <h2>{{name}}</h2>
     <h3>{{code}}</h3>
   </div>
-  <form class="form-group" (submit)="create()">
+  <form class="form-group" (submit)="start()">
     <label> Teilnehmer: </label>
     <div class="container">
       <div id="table" class="table-editable">
@@ -18,7 +18,7 @@
         </table>
       </div>
     </div>
-    <button class="btn btn-primary" type="submit" routerLink="/creatorview">Stationslauf starten</button>
+    <button class="btn btn-primary" type="submit">Stationslauf starten</button>
     <button class="btn btn-primary" routerLink="/create"> Zurück </button>
   </form>
 

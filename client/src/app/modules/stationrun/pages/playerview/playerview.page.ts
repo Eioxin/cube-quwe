@@ -4,7 +4,8 @@ import { User } from '../../../../shared/models/user';
 import { isEmpty } from 'rxjs/operators/isEmpty';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { map, switchMap, take } from 'rxjs/operators';
+import { map, switchMap, take, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-playerview',
@@ -12,26 +13,50 @@ import { map, switchMap, take } from 'rxjs/operators';
   styleUrls: ['./playerview.page.css']
 })
 export class PlayerViewComponent {
-  code: string;
+  id: string;
   name = '';
   stations = [];
-  started = false;
+  started$: Observable<boolean>;
 
   userlist: User[] = [];
+
+  player$: Observable<any>;
+
+  inStation = false;
 
   constructor(
     private route: ActivatedRoute,
     private database: AngularFireDatabase
   ) {
+    this.player$ = this.route.params.pipe(
+      map(params => params.id),
+      tap(id => (this.id = id)),
+      switchMap(id => this.database.object<any>(`players/${id}`).valueChanges())
+    );
+
+    this.started$ = this.route.params.pipe(
+      map(params => params.id),
+      switchMap(id =>
+        this.database.object<any>(`players/${id}`).valueChanges()
+      ),
+      map(player => player.runId),
+      switchMap(runId =>
+        this.database.object<any>(`stationruns/${runId}/started`).valueChanges()
+      ),
+      tap(test => console.log(test))
+    );
+
     this.route.params.pipe(map(params => params.id)).subscribe(id => {
       this.database
         .object<any>(`players/${id}`)
         .valueChanges()
         .pipe(
+          take(1),
           switchMap(player =>
             this.database
               .object<any>(`stationruns/${player.runId}`)
               .valueChanges()
+              .pipe(take(1))
           )
         )
         .subscribe(stationRun => {
@@ -41,7 +66,6 @@ export class PlayerViewComponent {
           const stations = [];
 
           stationIds.forEach(stationId => {
-            console.log(stationId);
             this.database
               .object<any>(`stations/${stationId}`)
               .valueChanges()
@@ -49,20 +73,34 @@ export class PlayerViewComponent {
               .subscribe(station => {
                 this.stations.push(station);
               });
+
+            this.database
+              .object(`players/${id}/stations/${stationId}`)
+              .set({ status: 'notstarted' });
           });
         });
     });
   }
 
-  // create() {
-  //   this._stationRunService.createStationRun().subscribe(result => {
-  //     this.userlist.forEach(station => {
-  //       this._stationRunService.createStation(result.id, station.name, station.description).subscribe();
-  //     });
-  //   });
-  // }
+  startStation(stationId: string) {
+    if (!this.inStation) {
+      this.database
+        .object(`players/${this.id}/stations/${stationId}/status`)
+        .set('started');
 
-  login() {
-    // TODO login from service
+      this.inStation = true;
+    }
+      
+  }
+
+  stopStation(stationId: string) {
+    if (this.inStation) {
+      this.database
+        .object(`players/${this.id}/stations/${stationId}/status`)
+        .set('done');
+
+      this.inStation = false;
+    }
+    
   }
 }
