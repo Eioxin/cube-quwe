@@ -4,7 +4,7 @@ import { User } from '../../../../shared/models/user';
 import { isEmpty } from 'rxjs/operators/isEmpty';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-playerview',
@@ -36,6 +36,20 @@ export class PlayerViewComponent {
         )
         .subscribe(stationRun => {
           this.name = stationRun.name;
+
+          const stationIds = Object.keys(stationRun.stations || {});
+          const stations = [];
+
+          stationIds.forEach(stationId => {
+            console.log(stationId);
+            this.database
+              .object<any>(`stations/${stationId}`)
+              .valueChanges()
+              .pipe(take(1))
+              .subscribe(station => {
+                this.stations.push(station);
+              });
+          });
         });
     });
   }
