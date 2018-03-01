@@ -1,40 +1,31 @@
-[debug] [2018-03-01T08:13:38.063Z] ----------------------------------------------------------------------
-[debug] [2018-03-01T08:13:38.065Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ucw\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions --port=9000
-[debug] [2018-03-01T08:13:38.065Z] CLI Version:   3.16.0
-[debug] [2018-03-01T08:13:38.065Z] Platform:      win32
-[debug] [2018-03-01T08:13:38.065Z] Node Version:  v8.4.0
-[debug] [2018-03-01T08:13:38.065Z] Time:          Thu Mar 01 2018 09:13:38 GMT+0100 (Mitteleuropäische Zeit)
-[debug] [2018-03-01T08:13:38.065Z] ----------------------------------------------------------------------
+[debug] [2018-03-01T08:44:53.006Z] ----------------------------------------------------------------------
+[debug] [2018-03-01T08:44:53.009Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ucw\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions --port=9000
+[debug] [2018-03-01T08:44:53.009Z] CLI Version:   3.16.0
+[debug] [2018-03-01T08:44:53.009Z] Platform:      win32
+[debug] [2018-03-01T08:44:53.009Z] Node Version:  v8.4.0
+[debug] [2018-03-01T08:44:53.010Z] Time:          Thu Mar 01 2018 09:44:53 GMT+0100 (Mitteleuropäische Zeit)
+[debug] [2018-03-01T08:44:53.010Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-03-01T08:13:38.077Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-03-01T08:13:38.078Z] > authorizing via signed-in user
-[debug] [2018-03-01T08:13:38.080Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-03-01T08:13:38.080Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- { refresh_token: '1/30oavwwfKxe-mqGVQ8D50S-n9gAQKdVZe6FLinJ6KKQ',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Thu Mar 01 2018 09:13:38 GMT+0100 (Mitteleuropäische Zeit)
-[debug] [2018-03-01T08:13:38.384Z] <<< HTTP RESPONSE 200
-[debug] [2018-03-01T08:13:38.392Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/cube-quwe  
+[debug] [2018-03-01T08:44:53.023Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-03-01T08:44:53.024Z] > authorizing via signed-in user
+[debug] [2018-03-01T08:44:53.027Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/cube-quwe  
   
- Thu Mar 01 2018 09:13:38 GMT+0100 (Mitteleuropäische Zeit)
-[debug] [2018-03-01T08:13:39.368Z] <<< HTTP RESPONSE 200
-[debug] [2018-03-01T08:13:39.369Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/cube-quwe/tokens  
+ Thu Mar 01 2018 09:44:53 GMT+0100 (Mitteleuropäische Zeit)
+[debug] [2018-03-01T08:44:53.886Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-01T08:44:53.886Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/cube-quwe/tokens  
   
- Thu Mar 01 2018 09:13:39 GMT+0100 (Mitteleuropäische Zeit)
-[debug] [2018-03-01T08:13:40.086Z] <<< HTTP RESPONSE 200
+ Thu Mar 01 2018 09:44:53 GMT+0100 (Mitteleuropäische Zeit)
+[debug] [2018-03-01T08:44:54.559Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from 'D:\UCW\Repos\cube-quwe-github'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2018-03-01T08:13:40.824Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/cube-quwe  
+[debug] [2018-03-01T08:44:55.293Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/cube-quwe  
   
- Thu Mar 01 2018 09:13:40 GMT+0100 (Mitteleuropäische Zeit)
-[debug] [2018-03-01T08:13:40.824Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/cube-quwe/apiKeys  
+ Thu Mar 01 2018 09:44:55 GMT+0100 (Mitteleuropäische Zeit)
+[debug] [2018-03-01T08:44:55.294Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/cube-quwe/apiKeys  
   
- Thu Mar 01 2018 09:13:40 GMT+0100 (Mitteleuropäische Zeit)
-[debug] [2018-03-01T08:13:42.009Z] <<< HTTP RESPONSE 200
-[debug] [2018-03-01T08:13:42.025Z] <<< HTTP RESPONSE 200
+ Thu Mar 01 2018 09:44:55 GMT+0100 (Mitteleuropäische Zeit)
+[debug] [2018-03-01T08:44:56.230Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-01T08:44:56.479Z] <<< HTTP RESPONSE 200
 [info] +  functions: stationruns: http://localhost:9000/cube-quwe/us-central1/stationruns
