@@ -19,21 +19,29 @@ class Station {
 }
 exports.Station = Station;
 class StationRunsService {
-    static createStationRun(code, ownerId) {
+    static createStationRun(name, description, code, ownerId) {
         const stationRun = new StationRun();
         const owner = new Player();
         stationRun.id = code;
+        stationRun.name = name;
+        stationRun.description = description;
         stationRun.ownerId = ownerId;
         owner.id = ownerId;
         const updates = {};
         updates['stationruns/' + code] = stationRun;
         updates['players/' + ownerId] = owner;
-        return database.ref().update(updates).then(() => {
+        return database
+            .ref()
+            .update(updates)
+            .then(() => {
             return stationRun;
         });
     }
     static getAllStationRuns() {
-        return database.ref('stationruns').once('value').then((snapshot) => {
+        return database
+            .ref('stationruns')
+            .once('value')
+            .then(snapshot => {
             return snapshot;
         });
     }
@@ -51,8 +59,14 @@ class StationRunsService {
         player.id = playerCode;
         const updates = {};
         updates['/stationruns/' + runCode + '/players/' + playerCode] = true;
-        return database.ref().update(updates).then(() => {
-            return database.ref('players/' + player.id).set(player).then(() => player);
+        return database
+            .ref()
+            .update(updates)
+            .then(() => {
+            return database
+                .ref('players/' + player.id)
+                .set(player)
+                .then(() => player);
         });
     }
     static deleteStationRun(code) {

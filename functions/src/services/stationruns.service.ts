@@ -6,6 +6,8 @@ const database = firebase.database();
 
 export class StationRun {
   id: string;
+  name: string;
+  description: string;
   ownerId: string;
   started: boolean = false;
   players: { [key: string]: Player } = {};
@@ -21,26 +23,38 @@ export class Station {
 }
 
 export class StationRunsService {
-
-  static createStationRun(code: string, ownerId: string): Promise<any> {
+  static createStationRun(
+    name: string,
+    description: string,
+    code: string,
+    ownerId: string
+  ): Promise<any> {
     const stationRun = new StationRun();
     const owner = new Player();
     stationRun.id = code;
+    stationRun.name = name;
+    stationRun.description = description;
     stationRun.ownerId = ownerId;
     owner.id = ownerId;
 
     const updates = {};
     updates['stationruns/' + code] = stationRun;
     updates['players/' + ownerId] = owner;
-    return database.ref().update(updates).then(() => {
-      return stationRun;
-    });
+    return database
+      .ref()
+      .update(updates)
+      .then(() => {
+        return stationRun;
+      });
   }
 
   static getAllStationRuns(): Promise<any> {
-    return database.ref('stationruns').once('value').then((snapshot) => {
-      return snapshot;
-    });
+    return database
+      .ref('stationruns')
+      .once('value')
+      .then(snapshot => {
+        return snapshot;
+      });
   }
 
   // static editStationRun(code: string, started: boolean): Observable<StationRun | undefined> {
@@ -59,9 +73,15 @@ export class StationRunsService {
 
     const updates: any = {};
     updates['/stationruns/' + runCode + '/players/' + playerCode] = true;
-    return database.ref().update(updates).then(() => {
-      return database.ref('players/' + player.id).set(player).then(() => player);
-    });
+    return database
+      .ref()
+      .update(updates)
+      .then(() => {
+        return database
+          .ref('players/' + player.id)
+          .set(player)
+          .then(() => player);
+      });
   }
 
   static deleteStationRun(code: string): Promise<any> {
