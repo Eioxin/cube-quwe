@@ -5,6 +5,7 @@ import { isEmpty } from 'rxjs/operators/isEmpty';
 import { Route, ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { map, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-queue',
@@ -14,23 +15,23 @@ import { map, switchMap } from 'rxjs/operators';
 export class QueueComponent {
   code: string;
   name: string;
-  userlist: User[] = [];
+  players = [];
 
   constructor(
     private route: ActivatedRoute,
     private database: AngularFireDatabase
   ) {
-    this.route.params
-      .pipe(
-        map(params => params.id),
-        switchMap(id =>
-          this.database.object<any>(`stationruns/${id}`).valueChanges()
-        )
-      )
-      .subscribe(run => {
-        this.name = run.name;
-        this.code = run.id;
-      });
+    this.route.params.pipe(map(params => params.id)).subscribe(id => {
+      this.database
+        .object<any>(`stationruns/${id}`)
+        .valueChanges()
+        .subscribe(run => {
+          const players = run.players || {};
+          this.players = Object.keys(players);
+          this.name = run.name;
+          this.code = run.id;
+        });
+    });
   }
 
   // create() {

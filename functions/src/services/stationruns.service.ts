@@ -16,6 +16,7 @@ export class StationRun {
 
 export class Player {
   id: string;
+  runId: string;
 }
 
 export class Station {
@@ -70,6 +71,7 @@ export class StationRunsService {
     /* TODO Datenbank */
     const player = new Player();
     player.id = playerCode;
+    player.runId = runCode;
 
     const updates: any = {};
     updates['/stationruns/' + runCode + '/players/' + playerCode] = true;

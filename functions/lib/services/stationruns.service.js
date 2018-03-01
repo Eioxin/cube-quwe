@@ -57,6 +57,7 @@ class StationRunsService {
         /* TODO Datenbank */
         const player = new Player();
         player.id = playerCode;
+        player.runId = runCode;
         const updates = {};
         updates['/stationruns/' + runCode + '/players/' + playerCode] = true;
         return database
