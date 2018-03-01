@@ -7,20 +7,20 @@
     <label> Teilnehmer: </label>
     <div class="container">
       <div id="table" class="table-editable">
-        <table class="table">
-          <tr>
-            <th>Code</th>
-            <th>Station</th>
-          </tr>
-          <tr *ngFor="let item of stationlist">
-            <td contenteditable="false">{{item.name}}</td>
-            <td contenteditable="true">{{item.description}}</td>
-          </tr>
-        </table>
+        <div id="table" class="table-editable">
+          <table class="table">
+            <tr>
+              <th>Code</th>
+            </tr>
+            <tr *ngFor="let player of players">
+              <td>{{player}}</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
-    <button class="btn btn-primary" type="submit" routerLink="" >Stationslauf beenden</button>
-    <button class="btn btn-primary" routerLink="" > Zurück </button>
+    <button class="btn btn-primary" type="submit" routerLink="">Stationslauf beenden</button>
+    <button class="btn btn-primary" routerLink=""> Zurück </button>
   </form>
 
 </section>

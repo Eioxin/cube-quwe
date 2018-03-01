@@ -5,7 +5,7 @@ import { isEmpty } from 'rxjs/operators/isEmpty';
 import { Route, ActivatedRoute, Router } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { map, switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-creatorview',

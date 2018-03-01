@@ -17,6 +17,7 @@ export class PlayerViewComponent {
   name = '';
   stations = [];
   started$: Observable<boolean>;
+  started = false;
 
   userlist: User[] = [];
 
@@ -43,7 +44,7 @@ export class PlayerViewComponent {
       switchMap(runId =>
         this.database.object<any>(`stationruns/${runId}/started`).valueChanges()
       ),
-      tap(test => console.log(test))
+      tap(started => (this.started = started))
     );
 
     this.route.params.pipe(map(params => params.id)).subscribe(id => {
@@ -83,24 +84,22 @@ export class PlayerViewComponent {
   }
 
   startStation(stationId: string) {
-    if (!this.inStation) {
+    if (!this.inStation && this.started) {
       this.database
         .object(`players/${this.id}/stations/${stationId}/status`)
         .set('started');
 
       this.inStation = true;
     }
-      
   }
 
   stopStation(stationId: string) {
-    if (this.inStation) {
+    if (this.inStation && this.started) {
       this.database
         .object(`players/${this.id}/stations/${stationId}/status`)
         .set('done');
 
       this.inStation = false;
     }
-    
   }
 }
