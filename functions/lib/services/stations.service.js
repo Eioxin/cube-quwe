@@ -8,10 +8,12 @@ class Station {
 }
 exports.Station = Station;
 class StationsService {
-    static createStation(stationRunCode, stationCode) {
+    static createStation(stationRunCode, stationCode, name, description) {
         const station = new Station();
         station.id = stationCode;
         station.stationRunCode = stationRunCode;
+        station.name = name;
+        station.description = description;
         const updates = {};
         updates['stationruns/' + stationRunCode + '/stations/' + stationCode] = true;
         updates['stations/' + stationCode] = station;

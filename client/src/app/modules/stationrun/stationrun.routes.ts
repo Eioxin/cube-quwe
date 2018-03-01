@@ -4,7 +4,7 @@ import { PlayerViewComponent } from './pages/playerview/playerview.page';
 import { CreatorViewComponent } from './pages/creatorview/creatorview.page';
 
 export const routes: Routes = [
-  { path: 'queue', pathMatch: 'full', component: QueueComponent },
-  { path: 'playerview', pathMatch: 'full', component: PlayerViewComponent },
-  { path: 'creatorview', pathMatch: 'full', component: CreatorViewComponent }
+  { path: ':id/queue', pathMatch: 'full', component: QueueComponent },
+  { path: ':id/playerview', pathMatch: 'full', component: PlayerViewComponent },
+  { path: ':id/creatorview', pathMatch: 'full', component: CreatorViewComponent }
 ];

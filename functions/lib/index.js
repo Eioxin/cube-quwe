@@ -8,10 +8,11 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 app.use(cors({ origin: true }));
-app.get('/create', (req, res) => {
+app.post('/create', (req, res) => {
+    const { name, description } = req.body;
     const code = randomstring.generate(6);
     const ownerId = randomstring.generate(6);
-    return stationruns_service_1.StationRunsService.createStationRun(code, ownerId).then(run => {
+    return stationruns_service_1.StationRunsService.createStationRun(name, description, code, ownerId).then(run => {
         res.json(run);
     });
 });
@@ -32,7 +33,8 @@ app.get('/:id/remove', (req, res) => {
 });
 app.get('/:id/station/create', (req, res) => {
     const code = randomstring.generate(6);
-    return stations_service_1.StationsService.createStation(req.params.id, code).then(station => {
+    const { name, description } = req.query;
+    return stations_service_1.StationsService.createStation(req.params.id, code, name, description).then(station => {
         if (!station) {
             res.status(500).end();
             return;
