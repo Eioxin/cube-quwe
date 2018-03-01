@@ -8,44 +8,57 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- nodejs
-- yarn
-- angular
+* nodejs
+* yarn (optional)
+* angular-cli
+* firebase-cli
 
 ### Installing
 
-1. Clone this project
-2. Install in parent directory (installs both client and server packages)
+1.  Clone this project
+2.  Install in parent directory (installs both client and server packages)
 
 ```
 yarn
 ```
 
-3. Setup database (TODO)
-4. Run the project (runs client builder with watch and webserver)
+or
+
+```
+npm install
+```
+
+3.  Setup database (TODO)
+4.  Run the project (runs client builder with watch and webserver)
 
 ```
 yarn start
 ```
 
-5. Open http://localhost:3000/ on your browser
+or
 
+```
+npm start
+```
+
+5.  Open http://localhost:4200/ on your browser
 
 ## Built With
 
 * [NodeJS](https://nodejs.org/en/)
 * [Express](https://expressjs.com)
 * [Angular](https://angular.io)
+* [Firebase](https://firebase.google.com)
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
-* **Uwe Wiemer** - *Frontend/Backend* - [hallowatcher](https://github.com/hallowatcher)
-* **Mirko Knorr** - *Front-end* - [Eioxin](https://github.com/Eioxin)
-* **Manuel Lipski** - *Database* - [manuel125](https://github.com/manuel125)
+* **Uwe Wiemer** - _Frontend/Backend_ - [hallowatcher](https://github.com/hallowatcher)
+* **Mirko Knorr** - _Front-end_ - [Eioxin](https://github.com/Eioxin)
+* **Manuel Lipski** - _Database_ - [manuel125](https://github.com/manuel125)
 
 ## License
 
